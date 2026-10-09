@@ -1,0 +1,430 @@
+@import "tailwindcss";
+
+@theme {
+  --color-blush: #f8dde8;
+  --color-lavender: #e8ddf8;
+  --color-cream: #fff9f5;
+  --color-paper: #fffcf6;
+  --color-rose: #e9a6bf;
+  --color-rose-deep: #a8577b;
+  --color-plum: #49344e;
+  --color-plum-deep: #24172e;
+  --color-champagne: #d8b77c;
+  --color-champagne-soft: #f0dfba;
+}
+
+@theme inline {
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-script: var(--font-pinyon), "Snell Roundhand", cursive;
+}
+
+:root {
+  color-scheme: light;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html,
+body {
+  height: 100%;
+  overscroll-behavior: none;
+}
+
+body {
+  background: #f3e6f6;
+  color: var(--color-plum);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgb(233 166 191 / 0.45);
+  color: var(--color-plum);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-rose-deep);
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
+.app-shell {
+  height: 100vh;
+  height: 100dvh;
+}
+
+.scene-scroll {
+  scrollbar-width: none;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.scene-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.scene-pad {
+  padding-top: calc(var(--safe-top) + 4.25rem);
+  padding-bottom: calc(var(--safe-bottom) + 1.75rem);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* SVG transform helpers */
+.origin-box {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.origin-bottom-box {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+.origin-right-box {
+  transform-box: fill-box;
+  transform-origin: 100% 60%;
+}
+.origin-left-box {
+  transform-box: fill-box;
+  transform-origin: 0% 60%;
+}
+
+/* ───────────────────────── Ambient loops (transform + opacity only) */
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+.anim-float {
+  animation: float-y 4.8s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+.anim-sway {
+  animation: sway 3.6s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: var(--tw-min, 0.25);
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: var(--tw-max, 1);
+    transform: scale(1);
+  }
+}
+.anim-twinkle {
+  animation: twinkle var(--dur, 3s) ease-in-out var(--delay, 0s) infinite;
+}
+
+@keyframes rise {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: var(--alpha, 0.8);
+  }
+  85% {
+    opacity: var(--alpha, 0.8);
+  }
+  100% {
+    transform: translate3d(var(--drift, 20px), -112vh, 0) rotate(var(--spin, 90deg));
+    opacity: 0;
+  }
+}
+.anim-rise {
+  animation: rise var(--dur, 14s) linear var(--delay, 0s) infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--alpha, 0.8);
+  }
+  88% {
+    opacity: var(--alpha, 0.8);
+  }
+  100% {
+    transform: translate3d(var(--drift, 40px), 115vh, 0) rotate(var(--spin, 240deg));
+    opacity: 0;
+  }
+}
+.anim-fall {
+  animation: fall var(--dur, 16s) linear var(--delay, 0s) infinite;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    transform: scale(1, 1) rotate(0deg);
+  }
+  25% {
+    transform: scale(0.94, 1.07) rotate(-2deg);
+  }
+  50% {
+    transform: scale(1.04, 0.95) rotate(1.5deg);
+  }
+  75% {
+    transform: scale(0.97, 1.05) rotate(-1deg);
+  }
+}
+.anim-flicker {
+  animation: flicker var(--dur, 1.4s) ease-in-out var(--delay, 0s) infinite;
+}
+
+@keyframes wing-flap {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0.45);
+  }
+}
+.anim-flap {
+  animation: wing-flap var(--dur, 2.4s) ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.94);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
+.anim-glow {
+  animation: glow-pulse var(--dur, 2.4s) ease-in-out var(--delay, 0s) infinite;
+}
+
+@keyframes balloon-bob {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-2deg);
+  }
+  50% {
+    transform: translate3d(0, -16px, 0) rotate(2.5deg);
+  }
+}
+.anim-balloon {
+  animation: balloon-bob var(--dur, 6s) ease-in-out var(--delay, 0s) infinite;
+}
+
+@keyframes cloud-drift {
+  0% {
+    transform: translate3d(-6%, 0, 0);
+  }
+  100% {
+    transform: translate3d(6%, 0, 0);
+  }
+}
+.anim-cloud {
+  animation: cloud-drift var(--dur, 38s) ease-in-out var(--delay, 0s) infinite alternate;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translate3d(-160%, 0, 0) skewX(-20deg);
+  }
+  60%,
+  100% {
+    transform: translate3d(360%, 0, 0) skewX(-20deg);
+  }
+}
+.anim-shimmer {
+  animation: shimmer 4.2s ease-in-out 1.2s infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.75);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+.anim-pulse-ring {
+  animation: pulse-ring 2.2s cubic-bezier(0.2, 0.6, 0.3, 1) var(--delay, 0s) infinite;
+}
+
+@keyframes halo {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+.anim-halo {
+  animation: halo 6s ease-in-out infinite;
+}
+
+@keyframes shooting {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(var(--angle, -28deg));
+    opacity: 0;
+  }
+  2% {
+    opacity: 1;
+  }
+  9% {
+    transform: translate3d(var(--dx, -60vw), var(--dy, 32vh), 0) rotate(var(--angle, -28deg));
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(var(--dx, -60vw), var(--dy, 32vh), 0) rotate(var(--angle, -28deg));
+    opacity: 0;
+  }
+}
+.anim-shooting {
+  animation: shooting var(--dur, 11s) ease-out var(--delay, 0s) infinite;
+}
+
+@keyframes hint-bounce {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+.anim-hint {
+  animation: hint-bounce 2s ease-in-out infinite;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.anim-draw {
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  animation: draw 1.6s ease-in-out forwards;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.anim-spin-slow {
+  animation: spin-slow 24s linear infinite;
+}
+
+@keyframes cursor-spark {
+  0% {
+    transform: translate3d(-50%, -50%, 0) scale(1) rotate(0deg);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate3d(calc(-50% + var(--dx, 0px)), calc(-50% + var(--dy, 14px)), 0) scale(0.2)
+      rotate(140deg);
+    opacity: 0;
+  }
+}
+.cursor-spark {
+  position: fixed;
+  pointer-events: none;
+  width: 12px;
+  height: 12px;
+  z-index: 60;
+  animation: cursor-spark 0.9s ease-out forwards;
+  background: radial-gradient(circle, #fff 0%, #f0dfba 40%, transparent 70%);
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+}
+
+/* ───────────────────────── Night sky brightening */
+
+.starfield .star {
+  --tw-min: 0.2;
+  --tw-max: 0.85;
+  transition: filter 1.2s ease;
+}
+.starfield.is-bright .star {
+  --tw-min: 0.55;
+  --tw-max: 1;
+}
+
+/* ───────────────────────── Stationery */
+
+.paper-texture {
+  background-color: var(--color-paper);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.33 0 0 0 0 0.3 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(120% 80% at 50% 0%, #fffefb 0%, transparent 70%),
+    linear-gradient(180deg, #fffcf6 0%, #fbf3e8 100%);
+}
+
+/* ───────────────────────── Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-float,
+  .anim-sway,
+  .anim-rise,
+  .anim-fall,
+  .anim-flicker,
+  .anim-flap,
+  .anim-balloon,
+  .anim-cloud,
+  .anim-shimmer,
+  .anim-pulse-ring,
+  .anim-halo,
+  .anim-shooting,
+  .anim-hint,
+  .anim-glow,
+  .anim-spin-slow {
+    animation: none !important;
+  }
+  .anim-twinkle {
+    animation: none !important;
+    opacity: var(--tw-max, 0.8);
+  }
+  .anim-rise,
+  .anim-fall {
+    opacity: var(--alpha, 0.6);
+  }
+  .anim-shooting {
+    opacity: 0;
+  }
+  .anim-draw {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .cursor-spark {
+    display: none;
+  }
+}
