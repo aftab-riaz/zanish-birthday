@@ -1,12 +1,12 @@
-# A Little Magic for Zanish ✨
+# A Little Magic for Hurriya ✨
 
 A five-scene interactive birthday surprise, built with Next.js (App Router),
 TypeScript, Tailwind CSS v4, Motion for React, Lucide and canvas-confetti.
 
 1. **A Little Surprise For You**: an illustrated gift that unties, opens and pours out light
-2. **Happy Birthday, Zanish**: a three-tier cake. Make a wish, the candles go out, confetti falls
+2. **Happy Birthday, Hurriya**: a three-tier cake. Make a wish, the candles go out, confetti falls
 3. **A Few Things Worth Celebrating**: a garden with five wishes (rose, star, envelope, butterfly, dandelion)
-4. **A Letter for Zanish**: a wax-sealed envelope that opens into a stationery letter
+4. **A Letter for Hurriya**: a wax-sealed envelope that opens into a stationery letter
 5. **The Magical Finale**: a night sky with a moon and shooting stars, plus replay and share
 
 ## Run locally
@@ -38,7 +38,7 @@ hear them once music is turned on.
 1. Create an empty repository on GitHub (e.g. `zanish-birthday`).
 2. Push this project:
    ```bash
-   git init && git add -A && git commit -m "A little magic for Zanish"
+   git init && git add -A && git commit -m "A little magic for Hurriya"
    git branch -M main
    git remote add origin https://github.com/<you>/zanish-birthday.git
    git push -u origin main

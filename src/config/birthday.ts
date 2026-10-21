@@ -1,11 +1,11 @@
 /**
- * ✨ A Little Magic for Zanish — central content configuration.
+ * ✨ A Little Magic for Hurriya — central content configuration.
  *
  * Every piece of text in the experience lives here. Change `name` and the
  * whole site updates. Messages, the letter, and music settings are below.
  */
 
-const name = "Zanish";
+const name = "Hurriya";
 const birthdayDate = "October 10";
 
 export type SceneId = "gift" | "cake" | "garden" | "letter" | "finale";
