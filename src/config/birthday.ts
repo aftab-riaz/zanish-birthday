@@ -6,7 +6,7 @@
  */
 
 const name = "Hurriya";
-const birthdayDate = "October 10";
+const birthdayDate = "October 22";
 
 export type SceneId = "gift" | "cake" | "garden" | "letter" | "finale";
 
