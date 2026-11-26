@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
-import { birthdayConfig } from "@/config/birthday";
+import { sajjiConfig } from "@/config/sajji";
 
-export const alt = birthdayConfig.meta.shareTitle;
+export const alt = sajjiConfig.meta.title;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -20,20 +20,15 @@ async function loadFont(family: string, text: string) {
   }
 }
 
-const STARS = [
-  [90, 80, 18], [210, 470, 12], [1080, 120, 22], [980, 520, 14], [160, 300, 9],
-  [1120, 360, 10], [560, 70, 10], [700, 560, 12], [400, 540, 8], [860, 60, 9],
-];
-
 export default async function OpengraphImage() {
-  const { name } = birthdayConfig;
-  const display = await loadFont("Cormorant+Garamond:ital,wght@1,500", `Happy Birthday, ${name} ${birthdayConfig.birthdayDate}`);
-  const script = await loadFont("Pinyon+Script", "A little surprise for you");
+  const { fullName } = sajjiConfig;
+  const heading = await loadFont("Baloo+2:wght@800", `Toh… Sajji treat pakki? ${fullName}`);
+  const sans = await loadFont("Poppins:wght@700", "URGENT NOTICE · CASE NO. SJ-786");
 
   const fonts = [
-    display && { name: "Cormorant", data: display, style: "italic" as const, weight: 500 as const },
-    script && { name: "Pinyon", data: script, style: "normal" as const, weight: 400 as const },
-  ].filter(Boolean) as { name: string; data: ArrayBuffer; style: "italic" | "normal"; weight: 400 | 500 }[];
+    heading && { name: "Baloo", data: heading, style: "normal" as const, weight: 800 as const },
+    sans && { name: "Poppins", data: sans, style: "normal" as const, weight: 700 as const },
+  ].filter(Boolean) as { name: string; data: ArrayBuffer; style: "normal"; weight: 700 | 800 }[];
 
   return new ImageResponse(
     (
@@ -42,66 +37,55 @@ export default async function OpengraphImage() {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background:
-            "radial-gradient(circle at 50% 0%, #F7EEFC 0%, rgba(247,238,252,0) 60%), linear-gradient(160deg, #EDE2F9 0%, #F8DDE8 55%, #FFF4EF 100%)",
-          color: "#49344E",
-          position: "relative",
+          background: "#FFD966",
+          color: "#1F1A17",
         }}
       >
-        {STARS.map(([x, y, s], i) => (
-          <svg key={i} width={s * 2} height={s * 2} viewBox="0 0 24 24" style={{ position: "absolute", left: x, top: y }}>
-            <path d="M12 0C12.8 7 17 11.2 24 12C17 12.8 12.8 17 12 24C11.2 17 7 12.8 0 12C7 11.2 11.2 7 12 0Z" fill={i % 3 ? "#D8B77C" : "#E9A6BF"} />
-          </svg>
-        ))}
         <div
           style={{
-            position: "absolute",
-            top: 28,
-            left: 28,
-            right: 28,
-            bottom: 28,
-            border: "2px solid rgba(216,183,124,0.55)",
-            borderRadius: 28,
+            width: 1060,
+            height: 490,
             display: "flex",
-          }}
-        />
-        <div
-          style={{
-            fontSize: 38,
-            letterSpacing: 4,
-            fontStyle: "italic",
-            color: "#A8577B",
-            fontFamily: display ? "Cormorant" : "serif",
-            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "#FFF8EC",
+            border: "6px solid #1F1A17",
+            borderRadius: 48,
+            boxShadow: "14px 14px 0 #1F1A17",
           }}
         >
-          {birthdayConfig.birthdayDate}
-        </div>
-        <div
-          style={{
-            fontSize: 112,
-            fontStyle: "italic",
-            fontFamily: display ? "Cormorant" : "serif",
-            marginTop: 18,
-            lineHeight: 1.05,
-            display: "flex",
-          }}
-        >
-          Happy Birthday, {name}
-        </div>
-        <div
-          style={{
-            fontSize: 64,
-            fontFamily: script ? "Pinyon" : "serif",
-            color: "#A8577B",
-            marginTop: 26,
-            display: "flex",
-          }}
-        >
-          A little surprise for you
+          <div
+            style={{
+              display: "flex",
+              fontSize: 26,
+              fontFamily: sans ? "Poppins" : "sans-serif",
+              fontWeight: 700,
+              color: "#FFE58A",
+              background: "#1F1A17",
+              borderRadius: 999,
+              padding: "10px 28px",
+            }}
+          >
+            URGENT NOTICE · CASE NO. SJ-786
+          </div>
+          <div style={{ display: "flex", fontSize: 60, fontFamily: heading ? "Baloo" : "sans-serif", fontWeight: 800, marginTop: 34 }}>
+            {fullName}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              fontSize: 96,
+              fontFamily: heading ? "Baloo" : "sans-serif",
+              fontWeight: 800,
+              color: "#FF4D2E",
+              lineHeight: 1.1,
+            }}
+          >
+            Toh… Sajji treat pakki? 🍗
+          </div>
         </div>
       </div>
     ),

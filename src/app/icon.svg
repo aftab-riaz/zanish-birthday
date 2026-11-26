@@ -1,14 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#F8DDE8"/>
-      <stop offset="1" stop-color="#E8DDF8"/>
+      <stop offset="0" stop-color="#F6C26B"/>
+      <stop offset="1" stop-color="#8E3A14"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="16" fill="url(#g)"/>
-  <rect x="14" y="30" width="36" height="22" rx="3" fill="#E9A6BF"/>
-  <rect x="11" y="23" width="42" height="9" rx="3" fill="#F3C3D5"/>
-  <rect x="29" y="23" width="6" height="29" fill="#D8B77C"/>
-  <path d="M32 23C26 12 16 14 18 21C19 24 26 24 32 23ZM32 23C38 12 48 14 46 21C45 24 38 24 32 23Z" fill="#D8B77C"/>
-  <path d="M52 6L53.6 10.4L58 12L53.6 13.6L52 18L50.4 13.6L46 12L50.4 10.4Z" fill="#49344E"/>
+  <rect width="64" height="64" rx="16" fill="#1A0F0A"/>
+  <rect x="30.5" y="6" width="3" height="50" rx="1.5" fill="#E8DED2"/>
+  <path d="M32 14C45 14 50 25 49 34C48 43 41 48 32 48C23 48 16 43 15 34C14 25 19 14 32 14Z" fill="url(#g)"/>
+  <path d="M23 24C25 20 29 18 33 18.5" fill="none" stroke="#FFF1C9" stroke-width="2" stroke-linecap="round"/>
+  <path d="M22 60C19 55 23 52 25 49C26 53 29 55 27 60ZM30 60C27 54 31 50 33 46C34 51 38 55 35 60ZM38 60C36 55 39 52 41 49C42 53 45 55 43 60Z" fill="#FF8A3D"/>
 </svg>
