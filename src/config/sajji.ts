@@ -18,7 +18,7 @@ export const sajjiConfig = {
     badge: "🚨 Urgent Notice",
     greeting: `Assalam-o-Alaikum, ${fullName}! 👋`,
     intro: "Aap ne khud kaha tha:",
-    quote: "“Main Sajji khila dungi!” 🍗",
+    quote: "“Main Sajji khila dungi!”\u00a0🍗",
     after: "Lekin uske baad… na koi date, na koi update. 👀",
     question: "Toh… Sajji treat pakki?",
     yes: "Haan, pakka! 🍗",
